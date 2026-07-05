@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Tsukishiro.MatrixApp.Core/Tsukishiro.MatrixApp.Core.csproj" />
+  <Project Path="Tsukishiro.MatrixApp/Tsukishiro.MatrixApp.csproj" />
+</Solution>
