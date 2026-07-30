@@ -4,6 +4,7 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Tsukishiro.MatrixApp.Core.Models;
 using Tsukishiro.MatrixApp.Views;
 
 namespace Tsukishiro.MatrixApp.ViewModels;
@@ -27,10 +28,9 @@ public partial class MainWindowViewModel : ViewModelBase
 
     private readonly string[] _idleMessages =
     [
-        "好饿好饿好饿我真的好饿",
-        "吃呀吃呀吃呀吃",
+        TianyiStatusMessages.ForLoading(),
         "锦依卫时刻守护",
-        "66CCFF",
+        "66CCFF ✦",
         "华风夏韵，洛水天依",
         "Connected"
     ];
@@ -109,6 +109,24 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         var rng = Random.Shared.Next(_recipeLyrics.Length);
         StatusMessage = "🍜 " + _recipeLyrics[rng];
+    }
+
+    public void SetError(string context)
+    {
+        StatusMessage = TianyiStatusMessages.ForError(context);
+        IsFlashActive = true;
+        Task.Delay(600).ContinueWith(_ =>
+            Dispatcher.UIThread.Post(() => IsFlashActive = false));
+    }
+
+    public void SetLoading()
+    {
+        StatusMessage = TianyiStatusMessages.ForLoading();
+    }
+
+    public void SetSuccess()
+    {
+        StatusMessage = TianyiStatusMessages.ForSuccess();
     }
 
     public void Trigger66CCFF()
