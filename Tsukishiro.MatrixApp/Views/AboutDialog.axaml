@@ -55,6 +55,31 @@
                     HorizontalAlignment="Center"
                     Width="100"
                     Click="OnOkClick" />
+
+            <!-- Debug: trigger Tianyi status messages -->
+            <TextBlock Text="试玩错误消息"
+                       Foreground="{StaticResource TextSecondaryBrush}"
+                       FontSize="10"
+                       HorizontalAlignment="Center"
+                       Margin="0,8,0,0" />
+            <WrapPanel HorizontalAlignment="Center" Spacing="4">
+                <Button Content="404" FontSize="11" Padding="8,2"
+                        Click="OnTestError" Tag="404" />
+                <Button Content="403" FontSize="11" Padding="8,2"
+                        Click="OnTestError" Tag="forbidden" />
+                <Button Content="500" FontSize="11" Padding="8,2"
+                        Click="OnTestError" Tag="server_error" />
+                <Button Content="⏱" FontSize="11" Padding="8,2"
+                        Click="OnTestError" Tag="timeout" />
+                <Button Content="🔒" FontSize="11" Padding="8,2"
+                        Click="OnTestError" Tag="auth" />
+                <Button Content="🐌" FontSize="11" Padding="8,2"
+                        Click="OnTestError" Tag="rate_limit" />
+                <Button Content="✅" FontSize="11" Padding="8,2"
+                        Click="OnTestSuccess" />
+                <Button Content="🍜" FontSize="11" Padding="8,2"
+                        Click="OnTestRecipe" />
+            </WrapPanel>
         </StackPanel>
     </Border>
 </Window>
