@@ -49,8 +49,103 @@
             </DockPanel>
         </Border>
 
+        <!-- Sidebar -->
+        <Border DockPanel.Dock="Left"
+                Width="240"
+                Background="{StaticResource CardBackgroundBrush}"
+                BorderThickness="0,0,1,0"
+                BorderBrush="{StaticResource SurfaceBorderBrush}">
+            <DockPanel LastChildFill="True">
+                <!-- User profile -->
+                <Border DockPanel.Dock="Top"
+                        Height="64"
+                        Padding="16,12">
+                    <DockPanel LastChildFill="True">
+                        <Border DockPanel.Dock="Left"
+                                Width="36" Height="36"
+                                CornerRadius="18"
+                                Background="{StaticResource TianyiBlueLighterBrush}"
+                                Margin="0,0,12,0">
+                            <TextBlock Text="U"
+                                       Foreground="{StaticResource TianyiBlueBrush}"
+                                       FontSize="16"
+                                       FontWeight="700"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </Border>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="User"
+                                       Foreground="{StaticResource TextPrimaryBrush}"
+                                       FontSize="14"
+                                       FontWeight="600" />
+                            <Ellipse Width="6" Height="6"
+                                     Fill="{StaticResource OnlineGreenBrush}"
+                                     HorizontalAlignment="Left"
+                                     Margin="0,2,0,0" />
+                        </StackPanel>
+                    </DockPanel>
+                </Border>
+
+                <!-- Room list -->
+                <ScrollViewer Padding="0,0,0,0">
+                    <StackPanel>
+                        <TextBlock Text="ROOMS"
+                                   Foreground="{StaticResource TextSecondaryBrush}"
+                                   FontSize="11"
+                                   FontWeight="600"
+                                   LetterSpacing="1"
+                                   Margin="16,16,16,8" />
+                        <!-- placeholder rooms -->
+                        <Border Margin="8,2" Padding="12,8" CornerRadius="6"
+                                Background="{StaticResource TianyiBlueLighterBrush}">
+                            <TextBlock Text="# general"
+                                       Foreground="{StaticResource TianyiBlueDarkerBrush}"
+                                       FontSize="13" FontWeight="600" />
+                        </Border>
+                        <Border Margin="8,2" Padding="12,8" CornerRadius="6">
+                            <TextBlock Text="# random"
+                                       Foreground="{StaticResource TextPrimaryBrush}"
+                                       FontSize="13" />
+                        </Border>
+                        <Border Margin="8,2" Padding="12,8" CornerRadius="6">
+                            <TextBlock Text="# music"
+                                       Foreground="{StaticResource TextPrimaryBrush}"
+                                       FontSize="13" />
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <!-- Decorative motif — 水波纹/中国结风格装饰 -->
+                <Border DockPanel.Dock="Bottom"
+                        Height="48"
+                        Background="Transparent">
+                    <Panel>
+                        <!-- Water ripple circles -->
+                        <Ellipse Width="120" Height="120"
+                                 Fill="{StaticResource TianyiBlueBrush}"
+                                 Opacity="0.04"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Bottom"
+                                 Margin="0,0,0,-60" />
+                        <Ellipse Width="80" Height="80"
+                                 Fill="{StaticResource TianyiBlueBrush}"
+                                 Opacity="0.06"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Bottom"
+                                 Margin="0,0,0,-40" />
+                        <Ellipse Width="40" Height="40"
+                                 Fill="{StaticResource TianyiBlueBrush}"
+                                 Opacity="0.08"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Bottom"
+                                 Margin="0,0,0,-20" />
+                    </Panel>
+                </Border>
+            </DockPanel>
+        </Border>
+
         <!-- Main content area -->
-        <Grid>
+        <Grid Background="{StaticResource PageBackgroundBrush}">
             <TextBlock Text="{Binding Greeting}"
                        Foreground="{StaticResource TextPrimaryBrush}"
                        HorizontalAlignment="Center"
