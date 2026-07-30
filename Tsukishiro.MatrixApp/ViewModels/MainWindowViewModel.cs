@@ -1,6 +1,8 @@
 ﻿using System.Timers;
+using Avalonia;
+using Avalonia.Controls.ApplicationLifetimes;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+using Tsukishiro.MatrixApp.Views;
 
 namespace Tsukishiro.MatrixApp.ViewModels;
 
@@ -25,6 +27,16 @@ public partial class MainWindowViewModel : ViewModelBase
     private int _idleIndex;
     private readonly Timer _idleTimer;
     private bool _isIdle;
+
+    [RelayCommand]
+    private void ShowAbout()
+    {
+        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            var dialog = new AboutDialog();
+            dialog.ShowDialog(desktop.MainWindow!);
+        }
+    }
 
     public MainWindowViewModel()
     {

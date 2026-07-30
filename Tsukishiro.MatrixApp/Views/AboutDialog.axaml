@@ -1,0 +1,60 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="Tsukishiro.MatrixApp.Views.AboutDialog"
+        Title="About Tsukishiro MatrixApp"
+        Width="400" Height="320"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource CardBackgroundBrush}">
+    <Border Padding="24">
+        <StackPanel Spacing="16" VerticalAlignment="Center">
+            <!-- Icon -->
+            <Border Width="64" Height="64"
+                    CornerRadius="32"
+                    Background="{StaticResource TianyiBlueBrush}"
+                    HorizontalAlignment="Center">
+                <TextBlock Text="T"
+                           Foreground="{StaticResource TextOnPrimaryBrush}"
+                           FontSize="28"
+                           FontWeight="700"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Border>
+
+            <TextBlock Text="Tsukishiro MatrixApp"
+                       Foreground="{StaticResource TextPrimaryBrush}"
+                       FontSize="18"
+                       FontWeight="700"
+                       HorizontalAlignment="Center" />
+
+            <TextBlock Text=".NET Matrix Client &amp; SDK"
+                       Foreground="{StaticResource TextSecondaryBrush}"
+                       FontSize="13"
+                       HorizontalAlignment="Center" />
+
+            <Border Height="1" Background="{StaticResource DividerBrush}" />
+
+            <TextBlock Foreground="{StaticResource TextPrimaryBrush}"
+                       FontSize="13"
+                       HorizontalAlignment="Center"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center">
+                <Run Text="华风夏韵，洛水天依" FontWeight="600" Foreground="{StaticResource TianyiBlueBrush}" />
+                <LineBreak />
+                <Run Text="锦依卫时刻守护" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" />
+            </TextBlock>
+
+            <TextBlock Text="v1.0.0 · .NET 10 · Avalonia 11"
+                       Foreground="{StaticResource TextSecondaryBrush}"
+                       FontSize="11"
+                       HorizontalAlignment="Center" />
+
+            <Button Content="OK"
+                    HorizontalAlignment="Center"
+                    Width="100"
+                    Click="OnOkClick" />
+        </StackPanel>
+    </Border>
+</Window>
