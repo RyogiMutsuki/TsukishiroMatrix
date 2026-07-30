@@ -173,6 +173,23 @@
 
         <!-- Main content area — Chat view -->
         <DockPanel LastChildFill="True" Background="{StaticResource PageBackgroundBrush}">
+            <!-- 66CCFF flash overlay -->
+            <Border IsVisible="{Binding IsFlashActive}"
+                    Background="{StaticResource TianyiBlueBrush}"
+                    Opacity="0.15"
+                    IsHitTestVisible="False"
+                    CornerRadius="0"
+                    ZIndex="100">
+                <Border.Styles>
+                    <Style Selector="Border">
+                        <Setter Property="Transitions">
+                            <Transitions>
+                                <DoubleTransition Property="Opacity" Duration="0:0:0.8" />
+                            </Transitions>
+                        </Setter>
+                    </Style>
+                </Border.Styles>
+            </Border>
             <!-- Chat header -->
             <Border DockPanel.Dock="Top"
                     Height="48"

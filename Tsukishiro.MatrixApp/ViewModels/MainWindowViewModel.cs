@@ -1,6 +1,8 @@
-﻿using System.Timers;
+﻿using System.Threading.Tasks;
+using System.Timers;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Tsukishiro.MatrixApp.Views;
 
@@ -13,6 +15,9 @@ public partial class MainWindowViewModel : ViewModelBase
 
     [ObservableProperty]
     private string _titleText = "Tsukishiro MatrixApp";
+
+    [ObservableProperty]
+    private bool _isFlashActive;
 
     public bool IsBirthday { get; }
     public string BirthdayGreeting => "🎂 洛天依生日快乐！🎵";
@@ -61,6 +66,16 @@ public partial class MainWindowViewModel : ViewModelBase
         _isIdle = true;
         _idleIndex = (_idleIndex + 1) % _idleMessages.Length;
         StatusMessage = _idleMessages[_idleIndex];
+    }
+
+    public void Trigger66CCFF()
+    {
+        IsFlashActive = true;
+        StatusMessage = "66CCFF ✦";
+        Task.Delay(800).ContinueWith(_ =>
+        {
+            Avalonia.Threading.Dispatcher.UIThread.Post(() => IsFlashActive = false);
+        });
     }
 
     partial void OnStatusMessageChanged(string value)
