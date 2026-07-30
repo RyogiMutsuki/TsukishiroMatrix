@@ -9,6 +9,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceInclude Source="/Theme/TianyiColors.axaml" />
                 <ResourceInclude Source="/Theme/TianyiStyles.axaml" />
+                <ResourceInclude Source="/Theme/TianyiIcons.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
