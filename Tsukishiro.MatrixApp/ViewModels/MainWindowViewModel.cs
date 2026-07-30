@@ -14,6 +14,9 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     private string _titleText = "Tsukishiro MatrixApp";
 
+    public bool IsBirthday { get; }
+    public string BirthdayGreeting => "🎂 洛天依生日快乐！🎵";
+
     private readonly string[] _idleMessages =
     [
         "好饿好饿好饿我真的好饿",
@@ -40,6 +43,13 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public MainWindowViewModel()
     {
+        var today = DateTime.Today;
+        IsBirthday = today.Month == 7 && today.Day == 12;
+        if (IsBirthday)
+        {
+            TitleText = "🎂 洛天依生日快乐！🎵";
+        }
+
         _idleTimer = new Timer(8000);
         _idleTimer.Elapsed += (_, _) => CycleIdleMessage();
         _idleTimer.AutoReset = true;
