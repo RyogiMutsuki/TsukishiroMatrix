@@ -3,18 +3,61 @@
         xmlns:vm="using:Tsukishiro.MatrixApp.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="600"
         x:Class="Tsukishiro.MatrixApp.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="Tsukishiro.MatrixApp">
+        Title="Tsukishiro.MatrixApp"
+        MinWidth="800" MinHeight="500">
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <DockPanel LastChildFill="True">
+        <!-- Title Bar — 天依蓝渐变 -->
+        <Border DockPanel.Dock="Top"
+                Height="44"
+                Background="{StaticResource TianyiBlueBrush}">
+            <DockPanel LastChildFill="True" Margin="12,0,0,0">
+                <!-- Window title -->
+                <TextBlock DockPanel.Dock="Left"
+                           Text="Tsukishiro MatrixApp"
+                           Foreground="{StaticResource TextOnPrimaryBrush}"
+                           FontSize="14"
+                           FontWeight="600"
+                           VerticalAlignment="Center" />
+                <!-- Spacer + control buttons could go here -->
+            </DockPanel>
+        </Border>
+
+        <!-- Status Bar -->
+        <Border DockPanel.Dock="Bottom"
+                Height="28"
+                Background="{StaticResource TianyiBlueLighterBrush}"
+                Padding="12,0">
+            <DockPanel LastChildFill="True">
+                <Ellipse DockPanel.Dock="Left"
+                         Width="8" Height="8"
+                         Fill="{StaticResource OnlineGreenBrush}"
+                         VerticalAlignment="Center"
+                         Margin="0,0,6,0" />
+                <TextBlock Text="Disconnected"
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           FontSize="11"
+                           VerticalAlignment="Center" />
+            </DockPanel>
+        </Border>
+
+        <!-- Main content area -->
+        <Grid>
+            <TextBlock Text="{Binding Greeting}"
+                       Foreground="{StaticResource TextPrimaryBrush}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="24"
+                       FontWeight="300" />
+        </Grid>
+    </DockPanel>
 
 </Window>
