@@ -22,7 +22,7 @@
             <DockPanel LastChildFill="True" Margin="12,0,0,0">
                 <!-- Window title -->
                 <TextBlock DockPanel.Dock="Left"
-                           Text="Tsukishiro MatrixApp"
+                           Text="{Binding TitleText}"
                            Foreground="{StaticResource TextOnPrimaryBrush}"
                            FontSize="14"
                            FontWeight="600"
@@ -42,7 +42,7 @@
                          Fill="{StaticResource OnlineGreenBrush}"
                          VerticalAlignment="Center"
                          Margin="0,0,6,0" />
-                <TextBlock Text="Disconnected"
+                <TextBlock Text="{Binding StatusMessage}"
                            Foreground="{StaticResource TextSecondaryBrush}"
                            FontSize="11"
                            VerticalAlignment="Center" />
