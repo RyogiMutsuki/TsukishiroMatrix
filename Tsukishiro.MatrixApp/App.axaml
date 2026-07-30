@@ -11,6 +11,7 @@
                 <ResourceInclude Source="/Theme/TianyiStyles.axaml" />
                 <ResourceInclude Source="/Theme/TianyiIcons.axaml" />
                 <ResourceInclude Source="/Theme/TianyiDark.axaml" />
+                <ResourceInclude Source="/Theme/TianyiTransitions.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

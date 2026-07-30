@@ -171,7 +171,8 @@
             <ScrollViewer Padding="16">
                 <StackPanel Spacing="12">
                     <!-- Received message -->
-                    <Border MaxWidth="480"
+                    <Border Classes="message-bubble"
+                            MaxWidth="480"
                             HorizontalAlignment="Left"
                             Padding="12,8"
                             CornerRadius="12,12,12,4"
@@ -191,7 +192,8 @@
                     </Border>
 
                     <!-- Sent message — 天依蓝气泡 -->
-                    <Border MaxWidth="480"
+                    <Border Classes="message-bubble"
+                            MaxWidth="480"
                             HorizontalAlignment="Right"
                             Padding="12,8"
                             CornerRadius="12,12,4,12"
@@ -203,7 +205,8 @@
                     </Border>
 
                     <!-- Received message -->
-                    <Border MaxWidth="480"
+                    <Border Classes="message-bubble"
+                            MaxWidth="480"
                             HorizontalAlignment="Left"
                             Padding="12,8"
                             CornerRadius="12,12,12,4"
@@ -223,7 +226,8 @@
                     </Border>
 
                     <!-- Sent message -->
-                    <Border MaxWidth="480"
+                    <Border Classes="message-bubble"
+                            MaxWidth="480"
                             HorizontalAlignment="Right"
                             Padding="12,8"
                             CornerRadius="12,12,4,12"
@@ -237,7 +241,8 @@
             </ScrollViewer>
 
             <!-- Input area -->
-            <Border DockPanel.Dock="Bottom"
+            <Border Classes="input-area"
+                    DockPanel.Dock="Bottom"
                     Height="48"
                     Background="{StaticResource CardBackgroundBrush}"
                     BorderThickness="0,1,0,0"
