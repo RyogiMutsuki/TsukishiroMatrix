@@ -1,0 +1,76 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- FluentTheme palette overrides — redirect to TianyiBlue -->
+    <StaticResource x:Key="SystemAccentColor" ResourceKey="TianyiBlue" />
+    <StaticResource x:Key="SystemAccentColorDark1" ResourceKey="TianyiBlueDark" />
+    <StaticResource x:Key="SystemAccentColorDark2" ResourceKey="TianyiBlueDarker" />
+    <StaticResource x:Key="SystemAccentColorDark3" ResourceKey="TianyiBlueDarker" />
+    <StaticResource x:Key="SystemAccentColorLight1" ResourceKey="TianyiBlueLight" />
+    <StaticResource x:Key="SystemAccentColorLight2" ResourceKey="TianyiBlueLighter" />
+    <StaticResource x:Key="SystemAccentColorLight3" ResourceKey="TianyiBlueLighter" />
+
+    <StaticResource x:Key="HighlightColor" ResourceKey="TianyiBlue" />
+    <StaticResource x:Key="ControlHighlightColor" ResourceKey="TianyiBlueLight" />
+
+    <!-- Button -->
+    <Style Selector="Button">
+        <Setter Property="Background" Value="{StaticResource TianyiBlueBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource TextOnPrimaryBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="FontWeight" Value="600" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Background" Duration="0:0:0.15" />
+            </Transitions>
+        </Setter>
+    </Style>
+
+    <Style Selector="Button:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource TianyiBlueDarkBrush}" />
+    </Style>
+
+    <Style Selector="Button:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource TianyiBlueDarkerBrush}" />
+    </Style>
+
+    <!-- TextBox -->
+    <Style Selector="TextBox">
+        <Setter Property="BorderThickness" Value="1.5" />
+        <Setter Property="BorderBrush" Value="{StaticResource SurfaceBorderBrush}" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <Style Selector="TextBox:focus /template/ Border">
+        <Setter Property="BorderBrush" Value="{StaticResource TianyiBlueBrush}" />
+    </Style>
+
+    <!-- ScrollBar -->
+    <Style Selector="ScrollBar Thumb">
+        <Setter Property="Background" Value="{StaticResource TianyiBlueLightBrush}" />
+    </Style>
+
+    <Style Selector="ScrollBar Thumb:pointerover">
+        <Setter Property="Background" Value="{StaticResource TianyiBlueBrush}" />
+    </Style>
+
+    <!-- Window -->
+    <Style Selector="Window">
+        <Setter Property="Background" Value="{StaticResource PageBackgroundBrush}" />
+    </Style>
+
+    <!-- ListBox / ListBoxItem -->
+    <Style Selector="ListBoxItem">
+        <Setter Property="CornerRadius" Value="6" />
+    </Style>
+
+    <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource TianyiBlueLighterBrush}" />
+    </Style>
+
+    <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#0D66CCFF" />
+    </Style>
+</ResourceDictionary>
