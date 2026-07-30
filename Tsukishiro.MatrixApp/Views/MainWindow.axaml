@@ -297,14 +297,15 @@
                             Width="36" Height="36"
                             CornerRadius="18"
                             Margin="8,0,0,0"
-                            Background="{StaticResource TianyiBlueBrush}">
+                            Background="{StaticResource TianyiBlueBrush}"
+                            Command="{Binding SendMessageCommand}">
                         <Panel Width="16" Height="16">
                             <Path Data="{StaticResource MicPath}"
                                   Stretch="Uniform"
                                   Fill="{StaticResource TextOnPrimaryBrush}" />
                         </Panel>
                     </Button>
-                    <TextBox Text=""
+                    <TextBox Text="{Binding InputText, Mode=TwoWay}"
                              Watermark="Type a message..."
                              BorderThickness="0"
                              Background="Transparent"

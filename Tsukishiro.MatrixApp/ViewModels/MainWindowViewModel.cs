@@ -19,6 +19,9 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     private bool _isFlashActive;
 
+    [ObservableProperty]
+    private string _inputText = "";
+
     public bool IsBirthday { get; }
     public string BirthdayGreeting => "🎂 洛天依生日快乐！🎵";
 
@@ -35,6 +38,40 @@ public partial class MainWindowViewModel : ViewModelBase
     private int _idleIndex;
     private readonly Timer _idleTimer;
     private bool _isIdle;
+
+    private static readonly string[] _recipeLyrics =
+    [
+        "小笼包 叉烧包 奶黄芝麻豆沙包",
+        "大碗炸酱面 热乎乎的吃不够",
+        "火锅底料蘸料 一样都不能少",
+        "糖醋里脊 外酥里嫩 酸甜刚好",
+        "北京烤鸭 卷饼吃 香脆又美味",
+        "麻婆豆腐 麻辣鲜香 入口即化",
+        "红烧肉 肥而不腻 入口即化",
+        "兰州拉面 汤清面劲 牛肉飘香",
+        "煎饼果子 来一套 鸡蛋薄脆加辣条",
+        "串串香 麻辣烫 冒菜火锅 一个都不能少",
+        "好饿好饿好饿 我真的好饿",
+        "吃呀吃呀吃呀 我们一起吃"
+    ];
+
+    [RelayCommand]
+    private void SendMessage()
+    {
+        var text = InputText.Trim();
+        if (string.IsNullOrEmpty(text)) return;
+
+        if (text.Equals("/recipe", StringComparison.OrdinalIgnoreCase))
+        {
+            ShowRandomRecipe();
+        }
+        else if (text.Contains("#66CCFF", StringComparison.OrdinalIgnoreCase))
+        {
+            Trigger66CCFF();
+        }
+
+        InputText = "";
+    }
 
     [RelayCommand]
     private void ShowAbout()
@@ -66,6 +103,12 @@ public partial class MainWindowViewModel : ViewModelBase
         _isIdle = true;
         _idleIndex = (_idleIndex + 1) % _idleMessages.Length;
         StatusMessage = _idleMessages[_idleIndex];
+    }
+
+    public void ShowRandomRecipe()
+    {
+        var rng = Random.Shared.Next(_recipeLyrics.Length);
+        StatusMessage = "🍜 " + _recipeLyrics[rng];
     }
 
     public void Trigger66CCFF()
