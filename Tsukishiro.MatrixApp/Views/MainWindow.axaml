@@ -144,15 +144,126 @@
             </DockPanel>
         </Border>
 
-        <!-- Main content area -->
-        <Grid Background="{StaticResource PageBackgroundBrush}">
-            <TextBlock Text="{Binding Greeting}"
-                       Foreground="{StaticResource TextPrimaryBrush}"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontSize="24"
-                       FontWeight="300" />
-        </Grid>
+        <!-- Main content area — Chat view -->
+        <DockPanel LastChildFill="True" Background="{StaticResource PageBackgroundBrush}">
+            <!-- Chat header -->
+            <Border DockPanel.Dock="Top"
+                    Height="48"
+                    Background="{StaticResource CardBackgroundBrush}"
+                    BorderThickness="0,0,0,1"
+                    BorderBrush="{StaticResource SurfaceBorderBrush}"
+                    Padding="16,0">
+                <DockPanel LastChildFill="True">
+                    <TextBlock Text="# general"
+                               Foreground="{StaticResource TextPrimaryBrush}"
+                               FontSize="15"
+                               FontWeight="600"
+                               VerticalAlignment="Center" />
+                    <TextBlock DockPanel.Dock="Right"
+                               Text="● Online"
+                               Foreground="{StaticResource OnlineGreenBrush}"
+                               FontSize="12"
+                               VerticalAlignment="Center" />
+                </DockPanel>
+            </Border>
+
+            <!-- Message list -->
+            <ScrollViewer Padding="16">
+                <StackPanel Spacing="12">
+                    <!-- Received message -->
+                    <Border MaxWidth="480"
+                            HorizontalAlignment="Left"
+                            Padding="12,8"
+                            CornerRadius="12,12,12,4"
+                            Background="{StaticResource CardBackgroundBrush}"
+                            BorderThickness="1"
+                            BorderBrush="{StaticResource SurfaceBorderBrush}">
+                        <StackPanel>
+                            <TextBlock Text="Alice"
+                                       Foreground="{StaticResource TianyiBlueBrush}"
+                                       FontSize="11"
+                                       FontWeight="600" />
+                            <TextBlock Text="Hello! Welcome to the room."
+                                       Foreground="{StaticResource TextPrimaryBrush}"
+                                       FontSize="14"
+                                       TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Sent message — 天依蓝气泡 -->
+                    <Border MaxWidth="480"
+                            HorizontalAlignment="Right"
+                            Padding="12,8"
+                            CornerRadius="12,12,4,12"
+                            Background="{StaticResource TianyiBlueBrush}">
+                        <TextBlock Text="Hi everyone! Thanks for having me."
+                                   Foreground="{StaticResource TextOnPrimaryBrush}"
+                                   FontSize="14"
+                                   TextWrapping="Wrap" />
+                    </Border>
+
+                    <!-- Received message -->
+                    <Border MaxWidth="480"
+                            HorizontalAlignment="Left"
+                            Padding="12,8"
+                            CornerRadius="12,12,12,4"
+                            Background="{StaticResource CardBackgroundBrush}"
+                            BorderThickness="1"
+                            BorderBrush="{StaticResource SurfaceBorderBrush}">
+                        <StackPanel>
+                            <TextBlock Text="Bob"
+                                       Foreground="{StaticResource JadeGreenBrush}"
+                                       FontSize="11"
+                                       FontWeight="600" />
+                            <TextBlock Text="Are you working on the Matrix client?"
+                                       Foreground="{StaticResource TextPrimaryBrush}"
+                                       FontSize="14"
+                                       TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Sent message -->
+                    <Border MaxWidth="480"
+                            HorizontalAlignment="Right"
+                            Padding="12,8"
+                            CornerRadius="12,12,4,12"
+                            Background="{StaticResource TianyiBlueBrush}">
+                        <TextBlock Text="Yes! Building it with Avalonia UI and .NET 10 🎵"
+                                   Foreground="{StaticResource TextOnPrimaryBrush}"
+                                   FontSize="14"
+                                   TextWrapping="Wrap" />
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Input area -->
+            <Border DockPanel.Dock="Bottom"
+                    Height="48"
+                    Background="{StaticResource CardBackgroundBrush}"
+                    BorderThickness="0,1,0,0"
+                    BorderBrush="{StaticResource SurfaceBorderBrush}"
+                    Padding="12,0">
+                <DockPanel LastChildFill="True">
+                    <Button DockPanel.Dock="Right"
+                            Width="36" Height="36"
+                            CornerRadius="18"
+                            Margin="8,0,0,0"
+                            Background="{StaticResource TianyiBlueBrush}">
+                        <Panel Width="16" Height="16">
+                            <Path Data="{StaticResource MicPath}"
+                                  Stretch="Uniform"
+                                  Fill="{StaticResource TextOnPrimaryBrush}" />
+                        </Panel>
+                    </Button>
+                    <TextBox Text=""
+                             Watermark="Type a message..."
+                             BorderThickness="0"
+                             Background="Transparent"
+                             FontSize="14"
+                             VerticalAlignment="Center" />
+                </DockPanel>
+            </Border>
+        </DockPanel>
     </DockPanel>
 
 </Window>
