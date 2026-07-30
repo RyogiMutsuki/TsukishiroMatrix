@@ -1,0 +1,22 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.ThemeVariant>
+        <ThemeVariant>Dark</ThemeVariant>
+    </ResourceDictionary.ThemeVariant>
+
+    <!-- Dark mode overrides — TianyiBlue stays vibrant, backgrounds go dark -->
+
+    <Color x:Key="PageBackground">#FF1A1C1E</Color>
+    <Color x:Key="CardBackground">#FF2A2D31</Color>
+    <Color x:Key="SurfaceBorder">#FF3A3D42</Color>
+    <Color x:Key="DividerColor">#FF3A3D42</Color>
+    <Color x:Key="TextPrimary">#FFE8EAED</Color>
+    <Color x:Key="TextSecondary">#FF9AA0A6</Color>
+
+    <SolidColorBrush x:Key="PageBackgroundBrush" Color="{StaticResource PageBackground}" />
+    <SolidColorBrush x:Key="CardBackgroundBrush" Color="{StaticResource CardBackground}" />
+    <SolidColorBrush x:Key="SurfaceBorderBrush" Color="{StaticResource SurfaceBorder}" />
+    <SolidColorBrush x:Key="DividerBrush" Color="{StaticResource DividerColor}" />
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimary}" />
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondary}" />
+</ResourceDictionary>
