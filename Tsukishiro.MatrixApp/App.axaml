@@ -3,12 +3,23 @@
              x:Class="Tsukishiro.MatrixApp.App"
              xmlns:local="using:Tsukishiro.MatrixApp"
              RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="/Theme/TianyiColors.axaml" />
+                <ResourceInclude Source="/Theme/TianyiStyles.axaml" />
+                <ResourceInclude Source="/Theme/TianyiIcons.axaml" />
+                <ResourceInclude Source="/Theme/TianyiDark.axaml" />
+                <ResourceInclude Source="/Theme/TianyiTransitions.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
 
     <Application.DataTemplates>
         <local:ViewLocator/>
     </Application.DataTemplates>
-  
+
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>

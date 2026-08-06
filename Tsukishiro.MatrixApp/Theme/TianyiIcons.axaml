@@ -1,0 +1,81 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- 天钿 — 洛天依的音之精灵（麦克风 + 单翼） -->
+    <DrawingGroup x:Key="TianyiMicIcon">
+        <!-- Mic body -->
+        <GeometryDrawing Brush="{StaticResource TianyiBlueBrush}">
+            <GeometryDrawing.Geometry>
+                <GeometryGroup>
+                    <!-- Mic head (oval) -->
+                    <EllipseGeometry Center="16,8" RadiusX="6" RadiusY="4" />
+                    <!-- Mic body -->
+                    <RectangleGeometry Rect="14,12,4,10" />
+                    <!-- Mic base (trapezoid) -->
+                    <PathGeometry>
+                        <PathFigure StartPoint="11,22" IsClosed="True">
+                            <LineSegment Point="21,22" />
+                            <LineSegment Point="19,26" />
+                            <LineSegment Point="13,26" />
+                        </PathFigure>
+                    </PathGeometry>
+                    <!-- Wing (天钿单翼) -->
+                    <PathGeometry>
+                        <PathFigure StartPoint="22,10" IsClosed="True">
+                            <BezierSegment Point1="28,6" Point2="32,12" Point3="26,16" />
+                            <BezierSegment Point1="30,14" Point2="28,10" Point3="22,10" />
+                        </PathFigure>
+                    </PathGeometry>
+                    <!-- Sound waves -->
+                    <PathGeometry>
+                        <PathFigure StartPoint="24,6" IsClosed="False">
+                            <BezierSegment Point1="28,4" Point2="30,8" Point3="28,12" />
+                        </PathFigure>
+                    </PathGeometry>
+                    <PathGeometry>
+                        <PathFigure StartPoint="26,4" IsClosed="False">
+                            <BezierSegment Point1="31,1" Point2="33,7" Point3="31,14" />
+                        </PathFigure>
+                    </PathGeometry>
+                </GeometryGroup>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <!-- App logo: stylized "T" + sound wave in TianyiBlue -->
+    <DrawingGroup x:Key="TianyiAppLogo">
+        <GeometryDrawing Brush="{StaticResource TianyiBlueBrush}">
+            <GeometryDrawing.Geometry>
+                <GeometryGroup>
+                    <!-- T letter -->
+                    <PathGeometry>
+                        <PathFigure StartPoint="2,2" IsClosed="False">
+                            <LineSegment Point="30,2" />
+                        </PathFigure>
+                        <PathFigure StartPoint="16,2" IsClosed="False">
+                            <LineSegment Point="16,30" />
+                        </PathFigure>
+                    </PathGeometry>
+                    <!-- Sound wave ring -->
+                    <EllipseGeometry Center="16,30" RadiusX="10" RadiusY="4" />
+                    <EllipseGeometry Center="16,30" RadiusX="16" RadiusY="6" />
+                </GeometryGroup>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <!-- Mic icon (simplified for send button) -->
+    <PathGeometry x:Key="MicPath">
+        <PathFigure StartPoint="8,5" IsClosed="True">
+            <ArcSegment Point="12,5" Size="2,3" SweepDirection="Clockwise" />
+            <LineSegment Point="12,14" />
+            <ArcSegment Point="8,14" Size="2,3" SweepDirection="Clockwise" />
+        </PathFigure>
+        <PathFigure StartPoint="10,14" IsClosed="False">
+            <LineSegment Point="10,18" />
+        </PathFigure>
+        <PathFigure StartPoint="6,17" IsClosed="False">
+            <BezierSegment Point1="10,20" Point2="14,20" Point3="14,17" />
+        </PathFigure>
+    </PathGeometry>
+</ResourceDictionary>

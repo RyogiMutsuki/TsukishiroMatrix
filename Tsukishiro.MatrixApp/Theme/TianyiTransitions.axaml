@@ -1,0 +1,56 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Shared page transition -->
+    <CrossFade x:Key="PageTransition" Duration="0:0:0.15" />
+
+    <!-- Sidebar room item hover animation (defined via style) -->
+    <Style Selector="Border.sidebar-room">
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Background" Duration="0:0:0.15" />
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.15" />
+            </Transitions>
+        </Setter>
+    </Style>
+
+    <!-- Message bubble appear animation -->
+    <Style Selector="Border.message-bubble">
+        <Setter Property="Transitions">
+            <Transitions>
+                <DoubleTransition Property="Opacity" Duration="0:0:0.2" />
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" />
+            </Transitions>
+        </Setter>
+        <Setter Property="RenderTransform">
+            <TranslateTransform Y="8" />
+        </Setter>
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+
+    <Style Selector="Border.message-bubble:loaded">
+        <Setter Property="RenderTransform">
+            <TranslateTransform Y="0" />
+        </Setter>
+        <Setter Property="Opacity" Value="1" />
+    </Style>
+
+    <!-- Input area focus glow -->
+    <Style Selector="Border.input-area:focus-within">
+        <Setter Property="BorderBrush" Value="{StaticResource TianyiBlueBrush}" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="BorderBrush" Duration="0:0:0.15" />
+            </Transitions>
+        </Setter>
+    </Style>
+
+    <!-- Avatar pulse on presence change -->
+    <Style Selector="Ellipse.status-dot">
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Fill" Duration="0:0:0.3" />
+            </Transitions>
+        </Setter>
+    </Style>
+</ResourceDictionary>

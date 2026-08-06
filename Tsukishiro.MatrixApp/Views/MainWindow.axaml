@@ -3,18 +3,317 @@
         xmlns:vm="using:Tsukishiro.MatrixApp.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="600"
         x:Class="Tsukishiro.MatrixApp.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="Tsukishiro.MatrixApp">
+        Title="Tsukishiro.MatrixApp"
+        MinWidth="800" MinHeight="500">
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <DockPanel LastChildFill="True">
+        <!-- Title Bar — 天依蓝渐变 -->
+        <Border DockPanel.Dock="Top"
+                Height="44"
+                Background="{StaticResource TianyiBlueBrush}">
+            <!-- Birthday sparkle decoration -->
+            <Panel IsVisible="{Binding IsBirthday}">
+                <TextBlock Text="✦"
+                           Foreground="{StaticResource TextOnPrimaryBrush}"
+                           Opacity="0.3"
+                           FontSize="20"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="80,0,0,0" />
+                <TextBlock Text="✦"
+                           Foreground="{StaticResource TextOnPrimaryBrush}"
+                           Opacity="0.2"
+                           FontSize="14"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Margin="0,0,80,0" />
+            </Panel>
+            <DockPanel LastChildFill="True" Margin="12,0,0,0">
+                <!-- Window title -->
+                <TextBlock DockPanel.Dock="Left"
+                           Text="{Binding TitleText}"
+                           Foreground="{StaticResource TextOnPrimaryBrush}"
+                           FontSize="14"
+                           FontWeight="600"
+                           VerticalAlignment="Center" />
+
+                <Button DockPanel.Dock="Right"
+                        Content="?"
+                        Width="32" Height="32"
+                        CornerRadius="16"
+                        Background="Transparent"
+                        Foreground="{StaticResource TextOnPrimaryBrush}"
+                        FontSize="16"
+                        FontWeight="700"
+                        Margin="0,0,8,0"
+                        Command="{Binding ShowAboutCommand}" />
+            </DockPanel>
+        </Border>
+
+        <!-- Status Bar -->
+        <Border DockPanel.Dock="Bottom"
+                Height="28"
+                Background="{StaticResource TianyiBlueLighterBrush}"
+                Padding="12,0">
+            <DockPanel LastChildFill="True">
+                <Ellipse DockPanel.Dock="Left"
+                         Width="8" Height="8"
+                         Fill="{StaticResource OnlineGreenBrush}"
+                         VerticalAlignment="Center"
+                         Margin="0,0,6,0" />
+                <TextBlock Text="{Binding StatusMessage}"
+                           Foreground="{StaticResource TextSecondaryBrush}"
+                           FontSize="11"
+                           VerticalAlignment="Center" />
+            </DockPanel>
+        </Border>
+
+        <!-- Sidebar -->
+        <Border DockPanel.Dock="Left"
+                Width="240"
+                Background="{StaticResource CardBackgroundBrush}"
+                BorderThickness="0,0,1,0"
+                BorderBrush="{StaticResource SurfaceBorderBrush}">
+            <DockPanel LastChildFill="True">
+                <!-- User profile -->
+                <Border DockPanel.Dock="Top"
+                        Height="64"
+                        Padding="16,12">
+                    <DockPanel LastChildFill="True">
+                        <Border DockPanel.Dock="Left"
+                                Width="36" Height="36"
+                                CornerRadius="18"
+                                Background="{StaticResource TianyiBlueLighterBrush}"
+                                Margin="0,0,12,0">
+                            <TextBlock Text="U"
+                                       Foreground="{StaticResource TianyiBlueBrush}"
+                                       FontSize="16"
+                                       FontWeight="700"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </Border>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="User"
+                                       Foreground="{StaticResource TextPrimaryBrush}"
+                                       FontSize="14"
+                                       FontWeight="600" />
+                            <Ellipse Width="6" Height="6"
+                                     Fill="{StaticResource OnlineGreenBrush}"
+                                     HorizontalAlignment="Left"
+                                     Margin="0,2,0,0" />
+                        </StackPanel>
+                    </DockPanel>
+                </Border>
+
+                <!-- Room list -->
+                <ScrollViewer Padding="0,0,0,0">
+                    <StackPanel>
+                        <TextBlock Text="ROOMS"
+                                   Foreground="{StaticResource TextSecondaryBrush}"
+                                   FontSize="11"
+                                   FontWeight="600"
+                                   LetterSpacing="1"
+                                   Margin="16,16,16,8" />
+                        <!-- placeholder rooms -->
+                        <Border Margin="8,2" Padding="12,8" CornerRadius="6"
+                                Background="{StaticResource TianyiBlueLighterBrush}">
+                            <TextBlock Text="# general"
+                                       Foreground="{StaticResource TianyiBlueDarkerBrush}"
+                                       FontSize="13" FontWeight="600" />
+                        </Border>
+                        <Border Margin="8,2" Padding="12,8" CornerRadius="6">
+                            <TextBlock Text="# random"
+                                       Foreground="{StaticResource TextPrimaryBrush}"
+                                       FontSize="13" />
+                        </Border>
+                        <Border Margin="8,2" Padding="12,8" CornerRadius="6">
+                            <TextBlock Text="# music"
+                                       Foreground="{StaticResource TextPrimaryBrush}"
+                                       FontSize="13" />
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <!-- Decorative motif — 水波纹/中国结风格装饰 -->
+                <Border DockPanel.Dock="Bottom"
+                        Height="48"
+                        Background="Transparent">
+                    <Panel>
+                        <!-- Water ripple circles -->
+                        <Ellipse Width="120" Height="120"
+                                 Fill="{StaticResource TianyiBlueBrush}"
+                                 Opacity="0.04"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Bottom"
+                                 Margin="0,0,0,-60" />
+                        <Ellipse Width="80" Height="80"
+                                 Fill="{StaticResource TianyiBlueBrush}"
+                                 Opacity="0.06"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Bottom"
+                                 Margin="0,0,0,-40" />
+                        <Ellipse Width="40" Height="40"
+                                 Fill="{StaticResource TianyiBlueBrush}"
+                                 Opacity="0.08"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Bottom"
+                                 Margin="0,0,0,-20" />
+                    </Panel>
+                </Border>
+            </DockPanel>
+        </Border>
+
+        <!-- Main content area — Chat view -->
+        <DockPanel LastChildFill="True" Background="{StaticResource PageBackgroundBrush}">
+            <!-- 66CCFF flash overlay -->
+            <Border IsVisible="{Binding IsFlashActive}"
+                    Background="{StaticResource TianyiBlueBrush}"
+                    Opacity="0.15"
+                    IsHitTestVisible="False"
+                    CornerRadius="0"
+                    ZIndex="100">
+                <Border.Styles>
+                    <Style Selector="Border">
+                        <Setter Property="Transitions">
+                            <Transitions>
+                                <DoubleTransition Property="Opacity" Duration="0:0:0.8" />
+                            </Transitions>
+                        </Setter>
+                    </Style>
+                </Border.Styles>
+            </Border>
+            <!-- Chat header -->
+            <Border DockPanel.Dock="Top"
+                    Height="48"
+                    Background="{StaticResource CardBackgroundBrush}"
+                    BorderThickness="0,0,0,1"
+                    BorderBrush="{StaticResource SurfaceBorderBrush}"
+                    Padding="16,0">
+                <DockPanel LastChildFill="True">
+                    <TextBlock Text="# general"
+                               Foreground="{StaticResource TextPrimaryBrush}"
+                               FontSize="15"
+                               FontWeight="600"
+                               VerticalAlignment="Center" />
+                    <TextBlock DockPanel.Dock="Right"
+                               Text="● Online"
+                               Foreground="{StaticResource OnlineGreenBrush}"
+                               FontSize="12"
+                               VerticalAlignment="Center" />
+                </DockPanel>
+            </Border>
+
+            <!-- Message list -->
+            <ScrollViewer Padding="16">
+                <StackPanel Spacing="12">
+                    <!-- Received message -->
+                    <Border Classes="message-bubble"
+                            MaxWidth="480"
+                            HorizontalAlignment="Left"
+                            Padding="12,8"
+                            CornerRadius="12,12,12,4"
+                            Background="{StaticResource CardBackgroundBrush}"
+                            BorderThickness="1"
+                            BorderBrush="{StaticResource SurfaceBorderBrush}">
+                        <StackPanel>
+                            <TextBlock Text="Alice"
+                                       Foreground="{StaticResource TianyiBlueBrush}"
+                                       FontSize="11"
+                                       FontWeight="600" />
+                            <TextBlock Text="Hello! Welcome to the room."
+                                       Foreground="{StaticResource TextPrimaryBrush}"
+                                       FontSize="14"
+                                       TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Sent message — 天依蓝气泡 -->
+                    <Border Classes="message-bubble"
+                            MaxWidth="480"
+                            HorizontalAlignment="Right"
+                            Padding="12,8"
+                            CornerRadius="12,12,4,12"
+                            Background="{StaticResource TianyiBlueBrush}">
+                        <TextBlock Text="Hi everyone! Thanks for having me."
+                                   Foreground="{StaticResource TextOnPrimaryBrush}"
+                                   FontSize="14"
+                                   TextWrapping="Wrap" />
+                    </Border>
+
+                    <!-- Received message -->
+                    <Border Classes="message-bubble"
+                            MaxWidth="480"
+                            HorizontalAlignment="Left"
+                            Padding="12,8"
+                            CornerRadius="12,12,12,4"
+                            Background="{StaticResource CardBackgroundBrush}"
+                            BorderThickness="1"
+                            BorderBrush="{StaticResource SurfaceBorderBrush}">
+                        <StackPanel>
+                            <TextBlock Text="Bob"
+                                       Foreground="{StaticResource JadeGreenBrush}"
+                                       FontSize="11"
+                                       FontWeight="600" />
+                            <TextBlock Text="Are you working on the Matrix client?"
+                                       Foreground="{StaticResource TextPrimaryBrush}"
+                                       FontSize="14"
+                                       TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Sent message -->
+                    <Border Classes="message-bubble"
+                            MaxWidth="480"
+                            HorizontalAlignment="Right"
+                            Padding="12,8"
+                            CornerRadius="12,12,4,12"
+                            Background="{StaticResource TianyiBlueBrush}">
+                        <TextBlock Text="Yes! Building it with Avalonia UI and .NET 10 🎵"
+                                   Foreground="{StaticResource TextOnPrimaryBrush}"
+                                   FontSize="14"
+                                   TextWrapping="Wrap" />
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Input area -->
+            <Border Classes="input-area"
+                    DockPanel.Dock="Bottom"
+                    Height="48"
+                    Background="{StaticResource CardBackgroundBrush}"
+                    BorderThickness="0,1,0,0"
+                    BorderBrush="{StaticResource SurfaceBorderBrush}"
+                    Padding="12,0">
+                <DockPanel LastChildFill="True">
+                    <Button DockPanel.Dock="Right"
+                            Width="36" Height="36"
+                            CornerRadius="18"
+                            Margin="8,0,0,0"
+                            Background="{StaticResource TianyiBlueBrush}"
+                            Command="{Binding SendMessageCommand}">
+                        <Panel Width="16" Height="16">
+                            <Path Data="{StaticResource MicPath}"
+                                  Stretch="Uniform"
+                                  Fill="{StaticResource TextOnPrimaryBrush}" />
+                        </Panel>
+                    </Button>
+                    <TextBox Text="{Binding InputText, Mode=TwoWay}"
+                             Watermark="Type a message..."
+                             BorderThickness="0"
+                             Background="Transparent"
+                             FontSize="14"
+                             VerticalAlignment="Center" />
+                </DockPanel>
+            </Border>
+        </DockPanel>
+    </DockPanel>
 
 </Window>

@@ -1,0 +1,60 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ============================================ -->
+    <!-- Tianyi Blue Theme — 洛天依 Theme Colors       -->
+    <!-- Reference: #66CCFF 天依蓝                     -->
+    <!-- ============================================ -->
+
+    <!-- Primary: 天依蓝 -->
+    <Color x:Key="TianyiBlue">#FF66CCFF</Color>
+    <Color x:Key="TianyiBlueDark">#FF4DB8E6</Color>
+    <Color x:Key="TianyiBlueDarker">#FF3399CC</Color>
+    <Color x:Key="TianyiBlueLight">#FFB3E5FF</Color>
+    <Color x:Key="TianyiBlueLighter">#FFE0F7FF</Color>
+
+    <!-- Accent: 翡翠绿 (碧玉) -->
+    <Color x:Key="JadeGreen">#FF7EC8A0</Color>
+    <Color x:Key="JadeGreenDark">#FF5CB885</Color>
+    <Color x:Key="JadeGreenLight">#FFA8DCC2</Color>
+
+    <!-- Neutral: Backgrounds & Surfaces -->
+    <Color x:Key="PageBackground">#FFF5F8FA</Color>
+    <Color x:Key="CardBackground">#FFFFFFFF</Color>
+    <Color x:Key="SurfaceBorder">#FFE5E7EB</Color>
+    <Color x:Key="DividerColor">#FFE0E3E8</Color>
+
+    <!-- Neutral: Text -->
+    <Color x:Key="TextPrimary">#FF1F2937</Color>
+    <Color x:Key="TextSecondary">#FF6B7280</Color>
+    <Color x:Key="TextOnPrimary">#FFFFFFFF</Color>
+
+    <!-- Status -->
+    <Color x:Key="OnlineGreen">#FF34D399</Color>
+    <Color x:Key="IdleYellow">#FFFBBF24</Color>
+    <Color x:Key="OfflineGray">#FF9CA3AF</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="TianyiBlueBrush" Color="{StaticResource TianyiBlue}" />
+    <SolidColorBrush x:Key="TianyiBlueDarkBrush" Color="{StaticResource TianyiBlueDark}" />
+    <SolidColorBrush x:Key="TianyiBlueDarkerBrush" Color="{StaticResource TianyiBlueDarker}" />
+    <SolidColorBrush x:Key="TianyiBlueLightBrush" Color="{StaticResource TianyiBlueLight}" />
+    <SolidColorBrush x:Key="TianyiBlueLighterBrush" Color="{StaticResource TianyiBlueLighter}" />
+
+    <SolidColorBrush x:Key="JadeGreenBrush" Color="{StaticResource JadeGreen}" />
+    <SolidColorBrush x:Key="JadeGreenDarkBrush" Color="{StaticResource JadeGreenDark}" />
+    <SolidColorBrush x:Key="JadeGreenLightBrush" Color="{StaticResource JadeGreenLight}" />
+
+    <SolidColorBrush x:Key="PageBackgroundBrush" Color="{StaticResource PageBackground}" />
+    <SolidColorBrush x:Key="CardBackgroundBrush" Color="{StaticResource CardBackground}" />
+    <SolidColorBrush x:Key="SurfaceBorderBrush" Color="{StaticResource SurfaceBorder}" />
+    <SolidColorBrush x:Key="DividerBrush" Color="{StaticResource DividerColor}" />
+
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimary}" />
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondary}" />
+    <SolidColorBrush x:Key="TextOnPrimaryBrush" Color="{StaticResource TextOnPrimary}" />
+
+    <SolidColorBrush x:Key="OnlineGreenBrush" Color="{StaticResource OnlineGreen}" />
+    <SolidColorBrush x:Key="IdleYellowBrush" Color="{StaticResource IdleYellow}" />
+    <SolidColorBrush x:Key="OfflineGrayBrush" Color="{StaticResource OfflineGray}" />
+</ResourceDictionary>
